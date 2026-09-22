@@ -1,0 +1,320 @@
+/* 모든 페이지 공용 스타일 — 검정 배경 + 흰 카드 + 노란 hover, 고운바탕 하나 */
+
+:root {
+  --bg: #0b0b0b;
+  --card: #ffffff;
+  --ink: #111111;
+  --muted: #8a8a8a;
+  --line: #e7e7e7;
+  --hover: #ffe94d;
+  --red: #e5261f;
+  --gap: 10px;
+  --radius: 6px;
+  --side: 340px;
+}
+
+* { box-sizing: border-box; }
+
+html, body { height: 100%; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Gowun Batang', 'AppleMyungjo', 'Batang', serif;
+  font-size: 15px;
+  line-height: 1.5;
+  word-break: keep-all;       /* 한글이 단어 단위로 줄바꿈 */
+  overflow-wrap: anywhere;    /* 대신 긴 URL 같은 건 넘치지 않게 */
+  -webkit-font-smoothing: antialiased;
+  transition: background-color .3s;
+}
+
+a { color: inherit; text-decoration: none; }
+
+button, textarea { font: inherit; color: inherit; }
+
+button {
+  cursor: pointer;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 6px 10px;
+}
+
+a:hover, button:hover:not(:disabled) { background: var(--hover); }
+
+a:focus-visible, button:focus-visible, textarea:focus-visible {
+  outline: 2px solid var(--hover);
+  outline-offset: 2px;
+}
+
+/* ── 레이아웃: 왼쪽 iframe / 오른쪽 사이드바 ─────────────────── */
+
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) var(--side);
+  gap: var(--gap);
+  height: 100vh;
+  height: 100dvh;
+  padding: var(--gap);
+}
+
+.board-wrap {
+  background: #fff;
+  border-radius: var(--radius);
+  overflow: hidden;
+  min-height: 0;
+}
+
+.board-wrap iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.side {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+  min-height: 0;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #444 transparent;
+}
+
+.card {
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 12px;
+  flex-shrink: 0;
+}
+
+/* ── 상단: 반 전체 문서 링크 ───────────────────────────────── */
+
+.top {
+  display: flex;
+  gap: 6px;
+  padding: 6px;
+}
+
+.top a {
+  border-radius: 4px;
+  padding: 10px 12px;
+}
+
+.top #everyone {
+  flex: 1;
+  font-size: 22px;
+  line-height: 1.25;
+}
+
+.top #home {
+  align-self: flex-start;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.top a[aria-current="page"] { background: var(--ink); color: #fff; }
+.top a[aria-current="page"]:hover { background: var(--hover); color: var(--ink); }
+
+/* ── 이름 버튼 그리드 ──────────────────────────────────────── */
+
+.names {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 4px;
+  padding: 6px;
+}
+
+.name {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+  padding: 6px 4px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  text-align: center;
+  font-size: 14px;
+  line-height: 1.2;
+}
+
+.name[aria-current="page"] {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: #fff;
+}
+
+.name[aria-current="page"]:hover { background: var(--hover); color: var(--ink); }
+
+/* ── iframe 스위처 링크 ────────────────────────────────────── */
+
+.links {
+  display: flex;
+  gap: 6px;
+  padding: 6px;
+}
+
+.links a {
+  flex: 1;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  text-align: center;
+}
+
+.links a.newtab {
+  flex: 0 0 auto;
+  color: var(--muted);
+}
+
+/* ── 타이머 ────────────────────────────────────────────────── */
+
+.timer { transition: background-color .3s, color .3s; }
+
+.timer-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.timer-toggle {
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  font-size: 13px;
+}
+
+.timer-toggle[aria-pressed="true"] { background: var(--ink); color: #fff; border-color: var(--ink); }
+
+.timer-big {
+  font-size: 52px;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+  margin-top: 2px;
+}
+
+.timer-sub {
+  color: var(--muted);
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+}
+
+.timer-controls { margin-top: 10px; }
+
+.presets, .actions {
+  display: flex;
+  gap: 4px;
+}
+
+.presets button, .actions button { flex: 1; padding: 6px 0; }
+
+.actions { margin-top: 4px; }
+
+.presets button.on { background: var(--ink); border-color: var(--ink); color: #fff; }
+.presets button.on:hover { background: var(--hover); color: var(--ink); }
+
+.timer.warn .timer-big { color: #d98a00; }
+
+/* 시간 끝 → 빨간 배경 */
+body.time-up { background: var(--red); }
+.timer.time-up { background: var(--red); color: #fff; }
+.timer.time-up .timer-head,
+.timer.time-up .timer-sub { color: rgba(255, 255, 255, .85); }
+.timer.time-up button { color: var(--ink); }
+.timer.time-up .timer-big { color: #fff; animation: blink 1s steps(2, start) infinite; }
+
+@keyframes blink { to { visibility: hidden; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .timer.time-up .timer-big { animation: none; }
+}
+
+/* ── 방명록 ────────────────────────────────────────────────── */
+
+.guestbook h2 {
+  margin: 0 0 8px;
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--muted);
+}
+
+.guestbook textarea {
+  display: block;
+  width: 100%;
+  min-height: 72px;
+  padding: 8px 10px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  resize: vertical;
+  background: #fff;
+}
+
+.gb-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 6px;
+}
+
+.gb-count { color: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; }
+
+.gb-row button:disabled { opacity: .5; cursor: default; }
+
+.gb-status {
+  margin: 8px 0 0;
+  padding: 6px 8px;
+  background: #fafafa;
+  border-radius: 4px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.gb-list {
+  list-style: none;
+  margin: 10px 0 0;
+  padding: 0;
+}
+
+.gb-list li {
+  padding: 10px 0;
+  border-top: 1px solid var(--line);
+}
+
+.gb-list li.pending { opacity: .5; }
+.gb-list li.empty { color: var(--muted); font-size: 13px; }
+
+.gb-list time {
+  display: block;
+  color: var(--muted);
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+}
+
+.gb-list p {
+  margin: 2px 0 0;
+  white-space: pre-wrap;
+}
+
+/* ── 모바일 ────────────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+  .layout {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+  }
+
+  .board-wrap { height: 72vh; height: 72dvh; }
+
+  .side { overflow: visible; }
+
+  .top #everyone { font-size: 20px; }
+
+  .timer-big { font-size: 44px; }
+}
