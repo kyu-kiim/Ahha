@@ -24,8 +24,9 @@
     return STUDENTS.find((s) => s.id === PAGE) || { id: PAGE, name: PAGE };
   }
   const entry = currentEntry();
-  // 개인 문서가 없으면 반 공용 문서를 보여준다
+  // 개인 문서/드라이브가 없으면 반 공용 것을 보여준다
   if (!entry.doc && C.EVERYONE && C.EVERYONE.doc) entry.doc = C.EVERYONE.doc;
+  if (!entry.drive && C.EVERYONE && C.EVERYONE.drive) entry.drive = C.EVERYONE.drive;
   const SHEET = entry.id;
 
   // 주소가 비어 있을 때 iframe에 띄울 안내 화면 (data: URL → target="board" 링크로도 열 수 있다)

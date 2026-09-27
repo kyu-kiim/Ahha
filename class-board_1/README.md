@@ -6,7 +6,7 @@
 ```
 index.html              홈
 00-everyone/index.html  반 전체 문서
-01-student1/ … 26-student26/   학생 페이지 (전부 같은 파일, data-page만 다름)
+01-student1/ … 27-student27/   학생 페이지 (전부 같은 파일, data-page만 다름)
 config.js               ← 이름, 문서 주소, D-day, SCRIPT_URL — 거의 여기만 고치면 됨
 script.js / style.css   모든 페이지 공용
 apps-script/Code.gs     방명록 백엔드 (구글 시트에 붙여넣기)

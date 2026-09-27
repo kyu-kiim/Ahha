@@ -26,7 +26,7 @@ const SHEET_NAMES = [
   '11-student11', '12-student12', '13-student13', '14-student14', '15-student15',
   '16-student16', '17-student17', '18-student18', '19-student19', '20-student20',
   '21-student21', '22-student22', '23-student23', '24-student24', '25-student25',
-  '26-student26',
+  '26-student26', '27-student27',
 ];
 
 const MAX_LEN = 500;   // 댓글 최대 글자 수
