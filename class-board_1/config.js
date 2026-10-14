@@ -43,7 +43,7 @@ window.CONFIG = {
 
   // 학생 목록 — 폴더를 복사해서 추가했다면 여기에도 한 줄 추가
   STUDENTS: [
-    { id: '01-student1',  name: '동준', doc: 'https://docs.google.com/document/d/15tOAXb4wAYh7Rd7j5tXLeARrlhdCISDM2LtO70GQTyc/edit?usp=sharing', drive: '' },
+    { id: '01-student1',  name: '동준', doc: 'https://docs.google.com/document/d/1cIDii0ybSPqPG7IFR9XsfvGd4wbIti6RMpSOXRr1wZI/edit?usp=sharing', drive: '' },
     { id: '02-student2',  name: '예영', doc: 'https://docs.google.com/document/d/1IWNw3fdEmaLjb32XNQTYHtB03CoSnBzf4cu3HOS4YPE/edit?usp=sharing', drive: '' },
     { id: '03-student3',  name: '수영', doc: 'https://docs.google.com/document/d/1qaHAZxjm9rNKkYIp8TsF02xqrXxd3stXT5oCxcb44j4/edit?usp=sharing', drive: '' },
     { id: '04-student4',  name: '해린', doc: 'https://docs.google.com/document/d/1x_YdTnLrsUu6QWSD7BypRX-t3Xv3Byd4NCCUb0i2cwA/edit?usp=sharing', drive: '' },
